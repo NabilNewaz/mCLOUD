@@ -1,4 +1,10 @@
+# mCLOUD
+
+Your cloud accounts as drives in the Finder, without macFUSE.
+
 ## About
+
+mCLOUD is made by Starbudweiser & Claude Code (Anthropic). Part of the **DESKTOP MAC TOOLKIT**. MIT License, © 2026 Starbudweiser. Provided as is, without warranty. "About mCLOUD" is in the app menu.
 
 **mCLOUD** is a macOS app that mounts your cloud accounts (Google Drive, Dropbox, OneDrive, iCloud Drive, Box, pCloud, Infomaniak kDrive, MEGA, S3, Backblaze B2, Wasabi, SFTP, FTP, Nextcloud, WebDAV) as drives in the Finder. No kernel extension and no macFUSE: it runs a local WebDAV server powered by [rclone](https://rclone.org) (MIT) and mounts it with macOS.
 
@@ -9,6 +15,11 @@
 - Available in French, English, Spanish and Italian.
 
 Independent project, not affiliated with the cloud services mentioned.
+
+## Requirements and installation
+
+- macOS 14 or later, Apple Silicon or Intel (universal binary).
+- Download `mCLOUD-<version>-macOS.zip` from the [Releases](https://github.com/starbudweiser/mCLOUD/releases) page, unzip it and move `mCLOUD.app` to Applications. The app is signed and notarized, and updates itself from GitHub releases (daily check, optional automatic install).
 
 ## Build
 

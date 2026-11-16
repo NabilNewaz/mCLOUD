@@ -109,6 +109,7 @@ enum Lang {
         ("about.version", "Version %@ (%@)", "Version %@ (%@)", "Versión %@ (%@)", "Versione %@ (%@)"),
         ("about.tagline", "Vos clouds comme des disques dans le Finder.", "Your clouds as drives in the Finder.", "Sus nubes como discos en el Finder.", "I tuoi cloud come dischi nel Finder."),
         ("about.authors", "Par Stéphan Le Gac Savoye", "By Stéphan Le Gac Savoye", "Por Stéphan Le Gac Savoye", "Di Stéphan Le Gac Savoye"),
+        ("about.collection", "Fait partie du DESKTOP MAC TOOLKIT", "Part of the DESKTOP MAC TOOLKIT", "Forma parte del DESKTOP MAC TOOLKIT", "Fa parte del DESKTOP MAC TOOLKIT"),
         ("about.license", "Licence MIT", "MIT license", "Licencia MIT", "Licenza MIT"),
         ("about.disclaimer", "Application indépendante, sans lien avec les services cloud cités.", "Independent app, not affiliated with the cloud services mentioned.", "Aplicación independiente, sin relación con los servicios en la nube citados.", "App indipendente, non affiliata ai servizi cloud citati."),
         ("about.credit", "Propulsé par rclone (licence MIT).", "Powered by rclone (MIT license).", "Impulsado por rclone (licencia MIT).", "Basato su rclone (licenza MIT)."),
