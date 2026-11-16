@@ -16,6 +16,8 @@ mCLOUD is made by Starbudweiser & Claude Code (Anthropic). Part of the **DESKTOP
 
 Independent project, not affiliated with the cloud services mentioned.
 
+![The main window listing four example cloud accounts (Google Drive, Amazon S3, Nextcloud, SFTP) ready to mount.](docs/screenshot.png)
+
 ## Requirements and installation
 
 - macOS 14 or later, Apple Silicon or Intel (universal binary).
