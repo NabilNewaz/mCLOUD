@@ -3,8 +3,10 @@ import Foundation
 
 enum Lang {
     static let lang: String = {
-        let p = Locale.preferredLanguages.first ?? "en"
-        for c in ["fr", "es", "it"] where p.hasPrefix(c) { return c }
+        // Première langue préférée du système prise en charge, anglais sinon.
+        for p in Locale.preferredLanguages {
+            for c in ["fr", "en", "es", "it"] where p.hasPrefix(c) { return c }
+        }
         return "en"
     }()
     private static let idx = ["fr": 0, "en": 1, "es": 2, "it": 3]
@@ -108,7 +110,7 @@ enum Lang {
         ("about.menu", "À propos de mCLOUD", "About mCLOUD", "Acerca de mCLOUD", "Informazioni su mCLOUD"),
         ("about.version", "Version %@ (%@)", "Version %@ (%@)", "Versión %@ (%@)", "Versione %@ (%@)"),
         ("about.tagline", "Vos clouds comme des disques dans le Finder.", "Your clouds as drives in the Finder.", "Sus nubes como discos en el Finder.", "I tuoi cloud come dischi nel Finder."),
-        ("about.authors", "Par Stéphan Le Gac Savoye", "By Stéphan Le Gac Savoye", "Por Stéphan Le Gac Savoye", "Di Stéphan Le Gac Savoye"),
+        ("about.authors", "Starbudweiser & Claude Code (Anthropic)", "Starbudweiser & Claude Code (Anthropic)", "Starbudweiser & Claude Code (Anthropic)", "Starbudweiser & Claude Code (Anthropic)"),
         ("about.collection", "Fait partie du DESKTOP MAC TOOLKIT", "Part of the DESKTOP MAC TOOLKIT", "Forma parte del DESKTOP MAC TOOLKIT", "Fa parte del DESKTOP MAC TOOLKIT"),
         ("about.license", "Licence MIT", "MIT license", "Licencia MIT", "Licenza MIT"),
         ("about.disclaimer", "Application indépendante, sans lien avec les services cloud cités.", "Independent app, not affiliated with the cloud services mentioned.", "Aplicación independiente, sin relación con los servicios en la nube citados.", "App indipendente, non affiliata ai servizi cloud citati."),
