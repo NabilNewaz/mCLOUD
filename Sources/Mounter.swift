@@ -44,7 +44,10 @@ final class Mounter: ObservableObject {
         let p = Process(), err = Pipe()
         p.executableURL = Rclone.bin
         p.arguments = ["--config", Rclone.conf.path, "serve", "webdav", spec.target, "--addr", "127.0.0.1:\(port)", "--baseurl", "/\(vol)",
-                       "--user", "mcloud", "--pass", pass, ] + Self.cacheArgs(a) + ["--cache-dir", cache.path, "--dir-cache-time", "5m",
+                       "--user", "mcloud", "--pass", pass, ] + Self.cacheArgs(a) + ["--cache-dir", cache.path, "--dir-cache-time", "1h", "--poll-interval", "30s",
+                       "--vfs-read-chunk-size", "32M", "--vfs-read-chunk-size-limit", "512M", "--buffer-size", "32M",
+                       "--drive-pacer-min-sleep", "10ms", "--drive-pacer-burst", "200", "--drive-chunk-size", "64M",
+                       "--transfers", "8", "--checkers", "16",
                        "--low-level-retries", "20", "--retries", "5", "--log-level", "ERROR"]
         p.environment = Rclone.environment(spec.env)
         p.standardOutput = FileHandle.nullDevice; p.standardError = err
