@@ -70,7 +70,7 @@ enum Rclone {
             r = await run(["config", "update", name, "--continue", "--state", st.state, "--result", answer, "--non-interactive", "--obscure"], timeout: 120)
         }
         if r.code != 0 { _ = await run(["config", "delete", name], timeout: 15); throw SetupError(message: lastLine(r.out)) }
-        let probe = await run(["lsd", "\(name):", "--max-depth", "0", "--timeout", "30s"], timeout: 90)
+        let probe = await run(["lsd", "\(name):", "--max-depth", "1", "--timeout", "30s"], timeout: 90)
         if probe.code != 0 { _ = await run(["config", "delete", name], timeout: 15); throw SetupError(message: lastLine(probe.out)) }
     }
 
@@ -85,6 +85,6 @@ enum Rclone {
 
     static func lastLine(_ s: String) -> String {
         let l = s.split(separator: "\n").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
-        return String((l.last(where: { $0.contains("rror") }) ?? l.last ?? "").suffix(300))
+        return String((l.last(where: { $0.localizedCaseInsensitiveContains("error") || $0.contains("Failed") }) ?? l.last ?? "").suffix(300))
     }
 }

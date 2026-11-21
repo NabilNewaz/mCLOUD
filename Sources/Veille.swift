@@ -96,8 +96,10 @@ final class Veille: ObservableObject {
     private func probeAccounts() async {
         for a in Store.shared.accounts where !a.pending && !a.remote.isEmpty {
             guard let spec = await Mounter.spec(a) else { continue }
-            let r = await Rclone.run(["lsd", spec.target, "--max-depth", "0", "--timeout", "30s", "--contimeout", "15s", "--retries", "2"], env: spec.env, timeout: 120)
+            let r = await Rclone.run(["lsd", spec.target, "--max-depth", "1", "--timeout", "30s", "--contimeout", "15s", "--retries", "2"], env: spec.env, timeout: 120)
             if r.code == 0 { continue }
+            let low = r.out.lowercased()
+            if !low.contains("error") && !low.contains("failed") { continue }   // sonde interrompue (délai) sans message d'erreur : pas un changement d'API
             let name = Providers.find(a.provider)?.name ?? a.name
             switch Self.classify(r.out) {
             case .network, .config: break
