@@ -143,7 +143,7 @@ final class Mounter: ObservableObject {
             guard case .on(let path) = state(a) else { continue }
             if procs[a.id] == nil || !FileManager.default.fileExists(atPath: path) { await heal(a); continue }
             guard online, let spec = await Self.spec(a) else { continue }
-            let r = await Rclone.run(["lsd", spec.target, "--max-depth", "0", "--timeout", "20s", "--contimeout", "10s", "--retries", "1"], env: spec.env, timeout: 60)
+            let r = await Rclone.run(["lsd", spec.target, "--max-depth", "1", "--timeout", "20s", "--contimeout", "10s", "--retries", "1"], env: spec.env, timeout: 60)
             if r.code == 0 { fails[a.id] = 0; continue }
             switch Veille.classify(r.out) {
             case .network, .config: fails[a.id, default: 0] += 1
